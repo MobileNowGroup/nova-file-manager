@@ -855,6 +855,7 @@ const useBrowserStore = defineStore('nova-file-manager/browser', {
       this.pinturaOptions = pinturaOptions
       this.cropperOptions = cropperOptions
       this.error = undefined
+      this.perPageOptions = cropperOptions.paginateSize ? range(cropperOptions.paginateSize.paginationStart, cropperOptions.paginateSize.paginationEnd, cropperOptions.paginateSize.paginationStep):this.perPageOptions;
     },
   },
   getters: {

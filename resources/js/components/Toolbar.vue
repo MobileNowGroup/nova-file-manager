@@ -29,6 +29,7 @@ const disks = computed(() => store.disks)
 const singleDisk = computed(() => store.singleDisk)
 const isFetchingDisks = computed(() => store.isFetchingDisks)
 const breadcrumbs = computed(() => store.breadcrumbs)
+const perPageOptions = computed(() => store.perPageOptions)
 const view = computed(() => store.view)
 const queue = computed(() => store.queue)
 const perPage = computed(() => store.perPage)
@@ -52,20 +53,6 @@ const deleteSelectedFiles = () => store.deleteSelectedFiles()
 const openUploadModal = () => {
   openModal(queue.value.length ? 'queue' : 'upload')
 }
-
-let perPageOptions;
-
-onBeforeMount(async () => {
-  try {
-    const paginationSizeRes = await Nova.request().get(`/api/nova-api/pagination-size`)
-    console.log(paginationSizeRes, 'paginationSizeRes')
-    const [paginationStart = 10, paginationEnd = 50, paginationStep = 10] = paginationSizeRes.data || []
-    perPageOptions = range(paginationStart, paginationEnd, paginationStep)
-  } catch(e) {
-    console.log(e, 'get pagination size api err')
-    perPageOptions = range(10, 50, 10)
-  }
-})
 
 </script>
 <template>

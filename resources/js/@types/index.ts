@@ -196,4 +196,11 @@ export interface CropperOptions {
   zoomOnTouch?: boolean
   zoomOnWheel?: boolean
   zoomable?: boolean
+  paginateSize?: PaginateSize
+}
+
+export interface PaginateSize {
+    paginationStart?:number
+    paginationEnd?:number
+    paginationStep?:number
 }
